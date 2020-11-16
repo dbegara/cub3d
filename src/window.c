@@ -12,13 +12,15 @@
 
 #include "../include/includes.h"
 
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
+
 t_window window_init(void)
 {
 	t_window	window;
 
 	window.mlx = mlx_init();
-	window.mlx_win = mlx_new_window(window.mlx, 1920, 1080, "Hello World");
-	mlx_loop(window.mlx);
+	window.mlx_win = mlx_new_window(window.mlx, WIN_WIDTH, WIN_HEIGHT, "Hello World");
 
 	return (window);
 }

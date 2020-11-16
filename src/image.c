@@ -28,10 +28,7 @@ void	img_put_and_destroy(t_window *mlx, t_image *img_prev, t_image *img_new, int
 	mlx_destroy_image(mlx->mlx, img_prev);
 }
 
-void	img_pixel_put(t_image *img, int x, int y, int color)
+void	img_pixel_put(t_image *img, int x, int y, int width, int color)
 {
-	char *dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	img->addr[x * width + y] = color;
 }

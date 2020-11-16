@@ -14,7 +14,7 @@
 #define INCLUDES_H
 
 #include <stdlib.h>
-#include <mlx.h>
+#include "../mlx/mlx.h"
 #include "window.h"
 #include "image.h"
 #include "functions.h"

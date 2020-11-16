@@ -18,6 +18,6 @@
 t_window	window_init(void);
 t_image		*img_create_tmp(t_image img);
 void		img_put_and_destroy(t_window *mlx, t_image *img_prev, t_image *img_new, int x, int y);
-void		img_pixel_put(t_image *img, int x, int y, int color);
+void		img_pixel_put(t_image *img, int x, int y, int width, int color);
 
 #endif
