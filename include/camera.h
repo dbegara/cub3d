@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 18:55:44 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/18 18:30:15 by davidbegara      ###   ########.fr       */
+/*   Created: 2020/11/18 20:13:22 by davidbegara       #+#    #+#             */
+/*   Updated: 2020/11/18 20:15:10 by davidbegara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#ifndef CAMERA_H
+# define CAMERA_H
 
-t_window window_init(void)
+typedef struct  s_camera
 {
-	t_window	window;
+    double      plane_x;
+    double      plane_y;
+}               t_camera;
 
-	window.mlx = mlx_init();
-	window.mlx_win = mlx_new_window(window.mlx, WIN_WIDTH, WIN_HEIGHT, "Raycaster");
-
-	return (window);
-}
+#endif

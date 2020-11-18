@@ -3,32 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:09:26 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/04 20:31:36 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/18 20:29:18 by davidbegara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-t_image	*img_create_tmp(t_image img)
+void	img_pixel_put(t_image *img, int x, int y, int color)
 {
-	t_image		*img_tmp;
-	
-	img_tmp = malloc(sizeof(t_image));
-	
-	*img_tmp = img;
-	return (img_tmp);
+	img->addr[y * WIN_WIDTH + x] = color;
 }
 
-void	img_put_and_destroy(t_window *mlx, t_image *img_prev, t_image *img_new, int x, int y)
+void	draw_vline(t_image *img, int x, int start, int end, int color)
 {
-	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img_new, x, y);
-	mlx_destroy_image(mlx->mlx, img_prev);
-}
-
-void	img_pixel_put(t_image *img, int x, int y, int width, int color)
-{
-	img->addr[x * width + y] = color;
+	while(start <= end)
+	{
+		img_pixel_put(img, x, start, color);
+		start++;
+	}
 }

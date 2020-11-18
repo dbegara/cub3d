@@ -3,47 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/04 20:31:38 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/18 20:23:29 by davidbegara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
-
-# define IMG_WIDTH 400
-# define IMG_HEIGHT 300
+int worldMap[24][24]=
+{
+  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
 
 int		main(void)
 {
 	t_window 	window;
-	t_image		img;
-	int		count_w;
-	int		count_h;
+	t_player	player;
+	t_camera	camera;
+	t_image 	*img;
 
 	window = window_init();
+	player = init_player();
 
-	img.img = mlx_new_image(window.mlx, IMG_WIDTH, IMG_HEIGHT);
-	img.addr = (int *)mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	camera.plane_x = 0;
+	camera.plane_y = 1;
 
-	count_h = -1;
-	while (++count_h < IMG_HEIGHT)
-	{
-		count_w = -1;
-		while (++count_w < IMG_WIDTH)
-		{
-			if (count_w % 2)
-				img_pixel_put(&img, count_h, count_w, IMG_WIDTH, 0xFFFFFF);
-			else
-				img_pixel_put(&img, count_h, count_w, IMG_WIDTH, 0xFF0000);
-		}
-	}
+	if (!(img = malloc(sizeof(t_image))))
+		return (1);
 
-	mlx_put_image_to_window(window.mlx, window.mlx_win, img.img, 0, 0);
+	img->img = mlx_new_image(window.mlx, WIN_WIDTH, WIN_HEIGHT);
+	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+
+	raycast(worldMap, player, camera, img);
+
+	mlx_put_image_to_window(window.mlx, window.mlx_win, img->img, 0, 0);
 	mlx_loop(window.mlx);
 	return (0);
 }

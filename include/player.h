@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 18:55:44 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/18 18:30:15 by davidbegara      ###   ########.fr       */
+/*   Created: 2020/11/18 20:05:58 by davidbegara       #+#    #+#             */
+/*   Updated: 2020/11/18 20:08:00 by davidbegara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#ifndef PLAYER_H
+# define PLAYER_H
 
-t_window window_init(void)
+typedef struct  s_player 
 {
-	t_window	window;
+    double      pos_x;
+    double      pos_y;
+    double      dir_x;
+    double      dir_y;
+}               t_player;    
 
-	window.mlx = mlx_init();
-	window.mlx_win = mlx_new_window(window.mlx, WIN_WIDTH, WIN_HEIGHT, "Raycaster");
-
-	return (window);
-}
+#endif

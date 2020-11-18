@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 18:55:44 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/18 18:30:15 by davidbegara      ###   ########.fr       */
+/*   Created: 2020/11/18 20:09:30 by davidbegara       #+#    #+#             */
+/*   Updated: 2020/11/18 20:11:58 by davidbegara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-t_window window_init(void)
+t_player    init_player(void)
 {
-	t_window	window;
+    t_player player;
 
-	window.mlx = mlx_init();
-	window.mlx_win = mlx_new_window(window.mlx, WIN_WIDTH, WIN_HEIGHT, "Raycaster");
+    player.pos_x = 22;
+    player.pos_y = 12;  //x and y start position
+    player.dir_x = -1;
+    player.dir_y = 0; //initial direction vector
 
-	return (window);
+    return (player);
 }
