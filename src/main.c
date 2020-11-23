@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
+/*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/18 20:23:29 by davidbegara      ###   ########.fr       */
+/*   Updated: 2020/11/23 20:52:49 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,21 @@ int worldMap[24][24]=
 
 int		main(void)
 {
-	t_window 	window;
-	t_player	player;
-	t_camera	camera;
-	t_image 	*img;
+	t_g *g;
 
-	window = window_init();
-	player = init_player();
-
-	camera.plane_x = 0;
-	camera.plane_y = 1;
-
-	if (!(img = malloc(sizeof(t_image))))
+  if (!(g = malloc(sizeof(t_g))))
 		return (1);
 
-	img->img = mlx_new_image(window.mlx, WIN_WIDTH, WIN_HEIGHT);
-	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+  init_game(g);
 
-	raycast(worldMap, player, camera, img);
+	raycast(worldMap, g->player, g->camera, &g->img);
 
-	mlx_put_image_to_window(window.mlx, window.mlx_win, img->img, 0, 0);
-	mlx_loop(window.mlx);
+	mlx_put_image_to_window(g->window.mlx, g->window.mlx_win, g->img.img, 0, 0);
+
+
+  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
+  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
+  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
+	mlx_loop(g->window.mlx);
 	return (0);
 }

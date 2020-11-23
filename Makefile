@@ -6,7 +6,7 @@
 #    By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 19:05:20 by dbegara-          #+#    #+#              #
-#    Updated: 2020/11/04 20:29:25 by dbegara-         ###   ########.fr        #
+#    Updated: 2020/11/23 18:38:54 by dbegara-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 $(BIN_DIR) $(OBJ_DIR):
 	mkdir -p $@
+
+re: fclean all
 
 fclean: clean
 	@$(RM) -rv $(BIN_DIR)

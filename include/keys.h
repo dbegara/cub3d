@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/23 20:23:29 by dbegara-         ###   ########.fr       */
+/*   Created: 2020/11/23 20:17:32 by dbegara-          #+#    #+#             */
+/*   Updated: 2020/11/23 20:20:41 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef KEYS_H
+# define KEYS_H
 
-# include <stdlib.h>
-# include <math.h>
-# include "../mlx/mlx.h"
-# include "keys.h"
-# include "move.h"
-# include "player.h"
-# include "window.h"
-# include "image.h"
-# include "camera.h"
-# include "global.h"
-# include "functions.h"
+# define ESC_KEY 53
+# define EXIT_KEY 17
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
+/*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/11/18 20:22:57 by davidbegara      ###   ########.fr       */
+/*   Updated: 2020/11/23 18:52:51 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void raycast(int worldMap[24][24], t_player player, t_camera camera, t_image *im
             drawEnd = WIN_HEIGHT - 1;
 
         //choose wall color
-        int color = 0xFFFFFF;
+        int color = 0xFFFFFFF;
 
         //give x and y sides different brightness
         if(side == 1)
