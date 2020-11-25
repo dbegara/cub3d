@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:28:45 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/23 20:59:04 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/25 20:47:18 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int     pressed(int keycode, t_g *g)
         g->move.s = 1;
     else if (keycode == D_KEY)
         g->move.d = 1;
+    else if (keycode == ROT_L_KEY)
+        g->move.rot_l = 1;
+    else if (keycode == ROT_R_KEY)
+        g->move.rot_r = 1;
     else if (keycode == ESC_KEY)
         cub_exit(g);
     return (0);
@@ -31,12 +35,16 @@ int     pressed(int keycode, t_g *g)
 int     depressed(int asi, t_g *me_siento)
 {
     if (asi == W_KEY)
-        me_siento->move.w = 1;
+        me_siento->move.w = 0;
     else if (asi == A_KEY)
-        me_siento->move.a = 1;
+        me_siento->move.a = 0;
     else if (asi == S_KEY)
-        me_siento->move.s = 1;
+        me_siento->move.s = 0;
     else if (asi == D_KEY)
-        me_siento->move.d = 1;
+        me_siento->move.d = 0;
+    else if (asi == ROT_L_KEY)
+        me_siento->move.rot_l = 0;
+    else if (asi == ROT_R_KEY)
+        me_siento->move.rot_r = 0;
     return (0);
 }

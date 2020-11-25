@@ -6,13 +6,13 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/11/23 18:52:51 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/25 20:37:46 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-void raycast(int worldMap[24][24], t_player player, t_camera camera, t_image *img)
+void raycast(char worldMap[24][24], t_player player, t_camera camera, t_image *img)
 {
     int x;
 
@@ -107,11 +107,11 @@ void raycast(int worldMap[24][24], t_player player, t_camera camera, t_image *im
             drawEnd = WIN_HEIGHT - 1;
 
         //choose wall color
-        int color = 0xFFFFFFF;
+        int color = create_trgb(0, 200, 150, 150);
 
         //give x and y sides different brightness
         if(side == 1)
-            color = color / 2;
+            color = create_trgb(0, 240, 200, 200);
 
         //draw the pixels of the stripe as a vertical line
         draw_vline(img, x, drawStart, drawEnd, color);

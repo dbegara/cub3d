@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:17:32 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/23 20:20:41 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/25 20:46:07 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
+# define ROT_L_KEY 123
+# define ROT_R_KEY 124
 
 #endif

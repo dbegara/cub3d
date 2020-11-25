@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:21:26 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/23 20:38:21 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/25 20:38:47 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ typedef struct  s_move
     int         s;
     int         a;
     int         d;
-    //int         rot_l;
-    //int         rot_r;
+    int         rot_l;
+    int         rot_r;
 }               t_move;
 
 

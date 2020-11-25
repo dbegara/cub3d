@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:24:24 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/23 20:38:36 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/25 21:11:13 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void    init_game(t_g *g)
     g->move.w = 0;
     g->move.d = 0;
     g->move.s = 0;
-    //g->move.rot_l = 0;
-    //g->move.rot_r;
+
+    g->move.rot_l = 0;
+    g->move.rot_r = 0;
 }
