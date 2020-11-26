@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/26 18:16:33 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/26 19:29:41 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int         cub_exit(t_g *g);
 int         create_trgb(int t, int r, int g, int b);
 int         game_loop(t_g *g);
 void        move(t_g *g);
+t_image     xpm_to_img(char *path, t_g *g);
 
 #endif
