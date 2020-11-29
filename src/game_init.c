@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:24:24 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/26 18:24:26 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/29 18:57:30 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void    init_game(t_g *g)
 
     g->move.rot_l = 0;
     g->move.rot_r = 0;
+
+    load_textures(g);
 }

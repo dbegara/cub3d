@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/29 20:46:43 by dbegara-         ###   ########.fr       */
+/*   Created: 2020/11/29 20:39:53 by dbegara-          #+#    #+#             */
+/*   Updated: 2020/11/29 21:15:33 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "includes.h"
 
-# include <stdlib.h>
-# include <math.h>
-# include "../mlx/mlx.h"
-# include "keys.h"
-# include "move.h"
-# include "player.h"
-# include "window.h"
-# include "image.h"
-# include "camera.h"
-# include "texture.h"
-# include "global.h"
-# include "functions.h"
+#ifndef TEXTURE_H
+# define TEXTURE_H
+
+typedef struct  s_texture 
+{
+    t_image     img;
+    int         width;
+    int         heigh;
+}               t_texture;
 
 #endif

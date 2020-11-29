@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 18:48:38 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/25 20:09:20 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/29 20:38:56 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int     game_loop(t_g *g)
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
     };
     move(g);
-    raycast(worldMap, g->player, g->camera, &g->img);
+    raycast(worldMap, g);
     mlx_put_image_to_window(g->window.mlx, g->window.mlx_win, g->img.img, 0, 0);
         
     return (0);

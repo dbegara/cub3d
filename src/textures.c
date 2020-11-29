@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/29 20:46:43 by dbegara-         ###   ########.fr       */
+/*   Created: 2020/11/29 18:53:50 by dbegara-          #+#    #+#             */
+/*   Updated: 2020/11/29 20:45:27 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "../include/includes.h"
 
-# include <stdlib.h>
-# include <math.h>
-# include "../mlx/mlx.h"
-# include "keys.h"
-# include "move.h"
-# include "player.h"
-# include "window.h"
-# include "image.h"
-# include "camera.h"
-# include "texture.h"
-# include "global.h"
-# include "functions.h"
-
-#endif
+void    load_textures(t_g *g)
+{
+    g->texture[0] = xpm_to_img("textures/wall1.xpm", g);
+    g->texture[1] = xpm_to_img("textures/wall2.xpm", g);
+    g->texture[2] = xpm_to_img("textures/wall3.xpm", g);
+    g->texture[3] = xpm_to_img("textures/wall4.xpm", g);
+}
