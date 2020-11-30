@@ -6,96 +6,93 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/11/29 21:25:52 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/11/30 19:52:36 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-void raycast(char worldMap[24][24], t_g *g)
+void set_vars(t_raycast *r, t_g *g)
 {
-    int x;
-
-    x = 0;
-    while (x < WIN_WIDTH)
-    {
-        //calculate ray position and direction
-        double cameraX = 2 * x / (double)WIN_WIDTH - 1; //x-coordinate in camera space
-        double rayDirX = g->player.dir_x + g->camera.plane_x * cameraX;
-        double rayDirY = g->player.dir_y + g->camera.plane_y * cameraX;
+    //calculate ray position and direction
+        r->cam_x = 2 * r->x / (double)WIN_WIDTH - 1; //x-coordinate in camera space
+        r->ray_x = g->player.dir_x + g->camera.plane_x * r->cam_x;
+        r->ray_y = g->player.dir_y + g->camera.plane_y * r->cam_x;
 
         //which box of the map we're in
-        int mapX = (int)g->player.pos_x;
-        int mapY = (int)g->player.pos_y;
+        r->map_x = (int)g->player.pos_x;
+        r->map_y = (int)g->player.pos_y;
 
-        //length of ray from current position to next x or y-side
-        double sideDistX;
-        double sideDistY;
+        //length of ray from one x or y-r.side to next x or y-r.side
+        r->d_dist_x = (r->ray_y == 0) ? 0 : ((r->ray_x == 0) ? 1 : fabs(1 / r->ray_x));
+        r->d_dist_y = (r->ray_x == 0) ? 0 : ((r->ray_y == 0) ? 1 : fabs(1 / r->ray_y));
 
-        //length of ray from one x or y-side to next x or y-side
-        double deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : fabs(1 / rayDirX));
-        double deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : fabs(1 / rayDirY));
-        double perpWallDist;
+        r->hit = 0; //was there a wall r.hit?
+}
 
-        //what direction to step in x or y-direction (either +1 or -1)
-        int stepX;
-        int stepY;
-
-        int hit = 0; //was there a wall hit?
-        int side; //was a NS or a EW wall hit?
-
-
-        //calculate step and initial sideDist
-        if (rayDirX < 0)
+void    ray_calc(t_raycast *r, t_g *g)
+{
+        //calculate step and initial r.sideDist
+        if (r->ray_x < 0)
         {
-            stepX = -1;
-            sideDistX = (g->player.pos_x - mapX) * deltaDistX;
+            r->step_x = -1;
+            r->s_dist_x = (g->player.pos_x - r->map_x) * r->d_dist_x;
         }
         else
         {
-            stepX = 1;
-            sideDistX = (mapX + 1.0 - g->player.pos_x) * deltaDistX;
+            r->step_x = 1;
+            r->s_dist_x = (r->map_x + 1.0 - g->player.pos_x) * r->d_dist_x;
         }
-        if (rayDirY < 0)
+        if (r->ray_y < 0)
         {
-            stepY = -1;
-            sideDistY = (g->player.pos_y - mapY) * deltaDistY;
+            r->step_y = -1;
+            r->s_dist_y = (g->player.pos_y - r->map_y) * r->d_dist_y;
         }
         else
         {
-            stepY = 1;
-            sideDistY = (mapY + 1.0 - g->player.pos_y) * deltaDistY;
+            r->step_y = 1;
+            r->s_dist_y = (r->map_y + 1.0 - g->player.pos_y) * r->d_dist_y;
         }
+}
 
-        //perform DDA
-        while (hit == 0)
+void    ray_dda(t_raycast *r, char worldMap[24][24], t_g *g)
+{
+    while (r->hit == 0)
+    {
+        if (r->s_dist_x < r->s_dist_y)
         {
-            //jump to next map square, OR in x-direction, OR in y-direction
-            if (sideDistX < sideDistY)
-            {
-                sideDistX += deltaDistX;
-                mapX += stepX;
-                side = 0;
-            }
-            else
-            {
-                sideDistY += deltaDistY;
-                mapY += stepY;
-                side = 1;
-            }
-            //Check if ray has hit a wall
-            if (worldMap[mapX][mapY] > 0) 
-                hit = 1;
+            r->s_dist_x += r->d_dist_x;
+            r->map_x += r->step_x;
+            r->side = 0;
         }
-
-        //Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
-        if(side == 0) 
-            perpWallDist = (mapX - g->player.pos_x + (1 - stepX) / 2) / rayDirX;
         else
-            perpWallDist = (mapY - g->player.pos_y + (1 - stepY) / 2) / rayDirY;
+        {
+            r->s_dist_y += r->d_dist_y;
+            r->map_y += r->step_y;
+            r->side = 1;
+        }
+        if (worldMap[r->map_x][r->map_y] > 0) 
+            r->hit = 1;
+    }
+    if(r->side == 0) 
+       r->wall_dist = (r->map_x - g->player.pos_x + (1 - r->step_x) / 2) / r->ray_x;
+    else
+        r->wall_dist = (r->map_y - g->player.pos_y + (1 - r->step_y) / 2) / r->ray_y;
+}
+
+void    raycast(char worldMap[24][24], t_g *g)
+{
+    t_raycast r;
+
+    r.x = 0;
+    while (r.x < WIN_WIDTH)
+    {
+        set_vars(&r, g);
+        ray_calc(&r, g);
+        ray_dda(&r, worldMap, g);
 
         //Calculate height of line to draw on screen
-        int lineHeight = (int)(WIN_HEIGHT / perpWallDist);
+        int lineHeight = (int)(WIN_HEIGHT / r.wall_dist);
 
         //calculate lowest and highest pixel to fill in current stripe
         int drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
@@ -106,37 +103,23 @@ void raycast(char worldMap[24][24], t_g *g)
         if(drawEnd >= WIN_HEIGHT)
             drawEnd = WIN_HEIGHT - 1;
 
-        /*
-        
-        //choose wall color
-        int color = create_trgb(0, 200, 150, 150);
-
-        //give x and y sides different brightness
-        if(side == 1)
-            color = create_trgb(0, 240, 200, 200);
-
-        //draw the pixels of the stripe as a vertical line
-        draw_vline(&g->img, x, drawStart, drawEnd, color);
-
-       */
-
-        int text_num = worldMap[mapX][mapY] - 1;
+        int text_num = worldMap[r.map_x][r.map_y] - 1;
         int tex_width = g->texture[0].width;
         int tex_heigh = g->texture[0].heigh;
 
-        // Calculate where the wall was hit
+        // Calculate where the wall was r.hit
         double wall_x;
-        if (side == 0)
-            wall_x = g->player.pos_y + perpWallDist * rayDirY;
+        if (r.side == 0)
+            wall_x = g->player.pos_y + r.wall_dist * r.ray_y;
         else
-            wall_x = g->player.pos_x + perpWallDist * rayDirX;
+            wall_x = g->player.pos_x + r.wall_dist * r.ray_x;
         wall_x -= floor(wall_x);
 
         // Calculate x-coordinate on the texture
         int tex_x = (int)(wall_x * (double)tex_width);
-        if (side == 0 && rayDirX > 0)
+        if (r.side == 0 && r.ray_x > 0)
             tex_x = tex_width - tex_x - 1;
-        if (side == 1 && rayDirY < 0)
+        if (r.side == 1 && r.ray_y < 0)
             tex_x = tex_width - tex_x - 1;
 
         double step = 1.0 * tex_heigh / lineHeight;
@@ -150,13 +133,13 @@ void raycast(char worldMap[24][24], t_g *g)
             tex_y = (int)tex_pos & (tex_heigh - 1);
             tex_pos += step;
             int color = g->texture[text_num].img.addr[tex_heigh * tex_y + tex_x];
-            img_pixel_put(&g->img, x, y, color);
+            img_pixel_put(&g->img, r.x, y, color);
             y++;
         }
 
-        paint_sky(&g->img, x, drawStart);
-        paint_floor(&g->img, x, drawEnd - 1);
+        paint_sky(&g->img, r.x, drawStart);
+        paint_floor(&g->img, r.x, drawEnd - 1);
 
-        x++;
+        r.x++;
     }
 }
