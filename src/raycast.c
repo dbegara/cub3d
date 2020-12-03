@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/12/03 19:34:48 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:09:50 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ void    raycast(char worldMap[24][24], t_g *g)
         paint_sky(&g->img, r.x, drawStart);
         paint_floor(&g->img, r.x, drawEnd - 1);
 
+        //Set z_buffer for the sprite
+        r.z_buffer[r.x] = r.wall_dist;
         r.x++;
     }
 }
