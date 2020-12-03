@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:39:15 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/30 18:52:22 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/03 19:34:35 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct  s_raycast
 {
+    double      z_buffer[WIN_WIDTH];
     int         x;
     int         y;
     double      cam_x;

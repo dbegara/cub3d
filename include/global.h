@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:58:59 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/29 20:43:23 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/03 19:52:23 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct  s_g
     t_image     img;
     t_move      move;
     t_texture   texture[4];
+    t_sprite    sprite;
 }               t_g;
 
 
