@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:27:56 by dbegara-         ###   ########.fr       */
+/*   Created: 2019/11/14 18:11:20 by dbegara-          #+#    #+#             */
+/*   Updated: 2019/11/14 18:11:23 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
-
-int		main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_g *g;
+	char	alpha;
+	int		cont;
+	char	*out;
 
-  if (!(g = malloc(sizeof(t_g))))
-		return (1);
-
-  init_game(g);
-
-  mlx_loop_hook(g->window.mlx, game_loop, g);
-
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
+	out = (char *)s;
+	cont = 0;
+	alpha = c;
+	while (out[cont] != '\0')
+		cont++;
+	while (cont >= 0)
+	{
+		if (out[cont] == alpha)
+			return (&out[cont]);
+		cont--;
+	}
 	return (0);
 }

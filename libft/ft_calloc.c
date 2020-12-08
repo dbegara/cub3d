@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:27:56 by dbegara-         ###   ########.fr       */
+/*   Created: 2019/11/12 17:46:48 by dbegara-          #+#    #+#             */
+/*   Updated: 2019/11/12 17:46:49 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_g *g;
+	void	*ptr;
+	size_t	total;
 
-  if (!(g = malloc(sizeof(t_g))))
-		return (1);
-
-  init_game(g);
-
-  mlx_loop_hook(g->window.mlx, game_loop, g);
-
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
-	return (0);
+	total = count * size;
+	if (!(ptr = malloc(total)))
+		return (0);
+	ft_bzero(ptr, total);
+	return (ptr);
 }

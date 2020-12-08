@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/12/03 20:09:50 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/07 18:58:35 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,49 @@ void    raycast(char worldMap[24][24], t_g *g)
         r.z_buffer[r.x] = r.wall_dist;
         r.x++;
     }
+
+    // SPRITE CASTING
+    double sprite_x = g->sprite.x - g->player.pos_x;
+    double sprite_y = g->sprite.y - g->player.pos_y;
+
+    double inv_det = 1.0 / (g->camera.plane_x * g->player.dir_y - g->player.dir_x * g->camera.plane_y);
+
+    double trans_x = inv_det * (g->player.dir_y * sprite_x - g->player.dir_x * sprite_y);
+    double trans_y = inv_det * (-g->camera.plane_y * sprite_x + g->camera.plane_x * sprite_y);
+
+    int s_screen_x = (int)(WIN_WIDTH / 2) * (1 + trans_x / trans_y);
+
+    //calculate height of the sprite on screen
+      int spriteHeight = abs((int)(WIN_HEIGHT / (trans_y))); //using 'transformY' instead of the real distance prevents fisheye
+      //calculate lowest and highest pixel to fill in current stripe
+      int drawStartY = -spriteHeight / 2 + WIN_HEIGHT / 2;
+      if(drawStartY < 0) drawStartY = 0;
+      int drawEndY = spriteHeight / 2 + WIN_HEIGHT / 2;
+      if(drawEndY >= WIN_HEIGHT) drawEndY = WIN_HEIGHT - 1;
+
+      //calculate width of the sprite
+      int spriteWidth = abs((int)(WIN_HEIGHT / (trans_y)));
+      int drawStartX = -spriteWidth / 2 + s_screen_x;
+      if(drawStartX < 0) drawStartX = 0;
+        int drawEndX = spriteWidth / 2 + s_screen_x;
+      if(drawEndX >= WIN_WIDTH) 
+        drawEndX = WIN_WIDTH - 1;
+    for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+      {
+        int texX = (int)(256 * (stripe - (-spriteWidth / 2 + s_screen_x)) * g->sprite.texture.width / spriteWidth) / 256;
+        //the conditions in the if are:
+        //1) it's in front of camera plane so you don't see things behind you
+        //2) it's on the screen (left)
+        //3) it's on the screen (right)
+        //4) ZBuffer, with perpendicular distance
+        if(trans_y > 0 && stripe > 0 && stripe < WIN_WIDTH && trans_y < r.z_buffer[stripe])
+        for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+        {
+          int d = (y) * 256 - WIN_HEIGHT * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
+          int texY = ((d * g->sprite.texture.heigh) / spriteHeight) / 256;
+          int color = g->sprite.texture.img.addr[g->sprite.texture.width * texY + texX]; //get current color from the texture
+          if((color & 0x00FFFFFF) != 0) 
+            img_pixel_put(&g->img, stripe, y, color); //paint pixel if it isn't black, black is the invisible color
+        }
+      }
 }

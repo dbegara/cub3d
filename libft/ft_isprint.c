@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:27:56 by dbegara-         ###   ########.fr       */
+/*   Created: 2019/11/12 17:47:21 by dbegara-          #+#    #+#             */
+/*   Updated: 2019/11/12 17:47:22 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
-
-int		main(int argc, char **argv)
+int		ft_isprint(int c)
 {
-	t_g *g;
-
-  if (!(g = malloc(sizeof(t_g))))
+	if (31 < c && c < 127)
+	{
 		return (1);
-
-  init_game(g);
-
-  mlx_loop_hook(g->window.mlx, game_loop, g);
-
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
+	}
 	return (0);
 }

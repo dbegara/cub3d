@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:27:56 by dbegara-         ###   ########.fr       */
+/*   Created: 2019/11/13 19:49:39 by dbegara-          #+#    #+#             */
+/*   Updated: 2019/11/20 21:01:46 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_g *g;
+	t_list		*element;
+	t_list		*tmp;
 
-  if (!(g = malloc(sizeof(t_g))))
-		return (1);
-
-  init_game(g);
-
-  mlx_loop_hook(g->window.mlx, game_loop, g);
-
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
-	return (0);
+	element = *lst;
+	while (element)
+	{
+		tmp = element->next;
+		ft_lstdelone(element, del);
+		element = tmp;
+	}
+	*lst = NULL;
 }

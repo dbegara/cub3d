@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:27:56 by dbegara-         ###   ########.fr       */
+/*   Created: 2019/11/14 18:10:50 by dbegara-          #+#    #+#             */
+/*   Updated: 2019/11/18 19:51:26 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_g *g;
+	char	*str;
+	int		cont;
 
-  if (!(g = malloc(sizeof(t_g))))
-		return (1);
-
-  init_game(g);
-
-  mlx_loop_hook(g->window.mlx, game_loop, g);
-
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
-	return (0);
+	cont = 0;
+	if (s == 0)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (!(str = malloc(len + 1)))
+		return (0);
+	while (len > 0)
+	{
+		str[cont] = s[start + cont];
+		len--;
+		cont++;
+	}
+	str[cont] = '\0';
+	return (str);
 }
