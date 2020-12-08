@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/29 21:24:17 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/08 18:08:56 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_texture   xpm_to_img(char *path, t_g *g);
 void        load_textures(t_g *g);
 void        paint_sky(t_image *img, int x, int length);
 void        paint_floor(t_image *img, int x, int start);
+void        check_args(int argc, char **argv, t_g *g);
 
 #endif

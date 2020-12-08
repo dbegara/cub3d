@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/03 19:51:59 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:42:46 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <math.h>
-# include "../mlx/mlx.h"
+# include "../lib/mlx/mlx.h"
 # include "keys.h"
 # include "move.h"
 # include "player.h"
