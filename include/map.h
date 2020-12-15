@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/09 18:22:35 by dbegara-         ###   ########.fr       */
+/*   Created: 2020/12/15 19:35:21 by dbegara-          #+#    #+#             */
+/*   Updated: 2020/12/15 20:50:27 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/includes.h"
+#ifndef MAP_H
+# define MAP_H
 
-int		main(int argc, char **argv)
-{
-	t_g *g;
+typedef struct  s_map {
 
-  g = check_args(argc, argv);
-  init_game(g);
+int             exist;
+char            *path;
+int             fd;
 
-  mlx_loop_hook(g->window.mlx, game_loop, g);
+}               t_map;
 
-  mlx_hook(g->window.mlx_win, 2, 1L<<0, pressed, g);
-  mlx_hook(g->window.mlx_win, 3, 1L<<1, depressed, g);
-  mlx_hook(g->window.mlx_win, EXIT_KEY, 0, cub_exit, g);
-	mlx_loop(g->window.mlx);
-	return (0);
-}
+#endif

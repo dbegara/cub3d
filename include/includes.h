@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/08 17:42:46 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/15 19:40:21 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define INCLUDES_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <math.h>
+# include "../lib/gnl/gnl.h"
 # include "../lib/mlx/mlx.h"
+# include "../lib/libft/libft.h"
 # include "keys.h"
 # include "move.h"
 # include "player.h"
@@ -25,6 +28,7 @@
 # include "texture.h"
 # include "raycast.h"
 # include "sprite.h"
+# include "map.h"
 # include "global.h"
 # include "functions.h"
 
