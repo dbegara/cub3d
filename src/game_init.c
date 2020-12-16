@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:24:24 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/29 18:57:30 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/16 21:25:08 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void    init_game(t_g *g)
 {
-    g->window = window_init();
+    window_init(g);
+    init_image(g);
 	g->player = init_player();
 
 	g->camera.plane_x = 0;
 	g->camera.plane_y = 0.66;
-
-	g->img.img = mlx_new_image(g->window.mlx, WIN_WIDTH, WIN_HEIGHT);
-	g->img.addr = (int *)mlx_get_data_addr(g->img.img, &g->img.bits_per_pixel, &g->img.line_length, &g->img.endian);
 
     g->move.a = 0;
     g->move.w = 0;

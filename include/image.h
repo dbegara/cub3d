@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:56:36 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/04 19:16:39 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/16 19:35:08 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct	s_image
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			width;
+	int			height;
 }				t_image;
 
 #endif

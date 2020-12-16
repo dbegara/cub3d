@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:43:53 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/15 20:45:47 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/16 17:41:17 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    error_exit(char *error, t_g *g, char close)
 {
-    printf("%s", error);
-    fflush(stdout);
+    ft_printf("Error:\n");
+    ft_printf("%s", error);
     if (close)
         cub_exit(g);
     else
