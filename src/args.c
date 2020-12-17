@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 18:07:22 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/16 17:41:38 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/17 19:26:04 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ t_g    *check_args(int argc, char **argv)
 
     if (!(g = malloc(sizeof(t_g))))
         error_exit("Fallo al alocar memoria", g, 0);
-    g->map.exist = 0;
+    g->file.exist = 0;
     if (argc < 2 || argc > 3)
-    {
-       free(g);
        error_exit("Número de argumentos incorrecto", g, 0);
-    }
     while (argc > 1)
     {
         if(!(ft_memcmp(argv[argc - 1], "--save", 7)))
@@ -32,10 +29,7 @@ t_g    *check_args(int argc, char **argv)
             parse_file(argv[argc - 1], g);
         argc--;
     }
-    if (!(g->map.exist))
-    {
-       free(g);
+    if (!(g->file.exist))
        error_exit("No se ha especificado el .cub", g, 0);
-    }
     return (g);
 }

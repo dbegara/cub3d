@@ -1,11 +1,11 @@
    R    1080    720
    
-NO textures/wall1.xpm
+NO textures/wall1.xpm   
 SO textures/wall2.xpm
 WE textures/wall3.xpm
 EA textures/wall4.xpm
 
-S text_sprites/cat.xpm
+S textures/sprite.xpm
 
 C 80, 80, 80
 

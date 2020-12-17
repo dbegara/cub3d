@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/15 21:37:10 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/17 19:23:04 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include "texture.h"
 # include "raycast.h"
 # include "sprite.h"
-# include "map.h"
+# include "file.h"
 # include "global.h"
 # include "functions.h"
 
