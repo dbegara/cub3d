@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 20:11:34 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/19 21:59:57 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int         depressed(int asi, t_g *me_siento);
 void        init_game(t_g *g);
 t_player    init_player(void);
 int         cub_exit(t_g *g);
-int         create_trgb(int t, int r, int g, int b);
+int         create_trgb(int r, int g, int b);
 int         game_loop(t_g *g);
 void        move(t_g *g);
 t_texture   xpm_to_img(char *path, t_g *g);
-void        paint_sky(t_image *img, int x, int length);
-void        paint_floor(t_image *img, int x, int start);
+void        paint_sky(t_g *g, int x, int length);
+void        paint_floor(t_g *g, int x, int start);
 t_g         *check_args(int argc, char **argv);
 void        parse_file(char *path, t_g *g);
 void        error_exit(char *error, t_g *g, char close);

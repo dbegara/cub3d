@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 18:44:21 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 21:24:14 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/19 19:50:18 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void    parse_file(char *path, t_g *g)
     set_res(g);
     window_init(g);
     tex_parse(g);
+    parse_color(g);
 }

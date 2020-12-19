@@ -6,60 +6,61 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 19:19:28 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 20:43:33 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/19 21:21:42 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-void    check_number(char c, t_g *g, char *line)
+int     retrieve_number(char **line, t_g *g, int i)
 {
-    if (!ft_isdigit(c))
-        line_error("Parámetro de color incorrecto", g, line);
-}
-
-void    save_color(int *color, char **line, t_g *g, char last)
-{
+    int num;
     int num_len;
-
-    check_number(**line, g, *line);
-    //num_len = store_num(*line, color);
-    num_len = *color;
-    //if (*(*(line) + num_len + 1) != (',' | ' ') && !last)
-    //line_error("TESTParámetro de color incorrecto", g, *line);
-    printf("Line: %s\nnum_len: %d\n", *line, num_len);
-    system("leaks cub3d");
-    exit(1);
-    *line = anti_space(*line, num_len + 1);
-    if (last && ft_strlen(*line) != 0)
-        line_error("Parámetro de color incorrecto", g, *line);
+    
+    if (!ft_isdigit(**line))
+        line_error("Parametro de color incorrecto2", g, *line);
+    num_len = store_num(*line, &num);
+    if (i != 2)
+        *line = anti_space(*line, num_len);
+    if (**line != ',' && i != 2)
+        line_error("Parametro de color incorrecto3", g, *line);
+    if (i != 2)
+        *line = anti_space(*line, 1);
+    if (i == 2 && ft_strlen(*(line) + num_len) != 0)
+        line_error("Parametro de color incorrecto4", g, *line);
+    return (num);
 }
 
-void    check_param(t_g *g, char c)
+int     get_color(char **line, t_g *g)
 {
-    char    *line;
-    /*int     c_r;
-    int     c_g;
-    int     c_b;*/
-    c = 0;
-    line = malloc(9);
-    //line = anti_space(read_line(g), c);
-    printf("Puntero: %p", line);
+    int color[3];
+    int i;
+
+    i = 0;
+    while (i < 3)
+    {
+        color[i] = retrieve_number(line, g, i);
+        printf("\n %d \n", color[i]);
+        i++;
+    }
     fflush(stdout);
-    //if (*line != c || !(ft_isspace(*(line + 1))))
-        line_error("Parámetro de color incorrecto", g, line);
-    /*line = anti_space(line, 1);
-    save_color(&c_r, &line, g, 0);
-    save_color(&c_g, &line, g, 0);
-    save_color(&c_b, &line, g, 1);
-    if (((c_r | c_g | c_b) > 255) || ((c_r | c_g | c_b) < 0))
-        line_error("Parámetro de color incorrecto", g, line);
-    free(line);
-    return (create_trgb(0, c_r, c_g, c_b));*/
+    return (create_trgb(color[0], color[1], color[2]));
 }
 
 void    parse_color(t_g *g)
 {
-    check_param(g, 'C');
-    //g->floor = check_param(g, 'F');
+    char *line;
+
+    line = anti_space(read_line(g), 0);
+    if (*line != 'C')
+        line_error("Parametro de color incorrecto1", g, line);
+    line = anti_space(line, 1);
+    g->ceiling = get_color(&line, g);
+    free(line);
+    line = anti_space(read_line(g), 0);
+    if (*line != 'F')
+        line_error("Parametro de color incorrecto", g, line);
+    line = anti_space(line, 1);
+    g->floor = get_color(&line, g);
+    free(line);
 }

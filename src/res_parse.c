@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 17:55:09 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 19:42:55 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/19 18:31:44 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int    store_num(char *str, int *num)
     len = num_len(str);
     a_num = malloc(len + 1);
     ft_strlcpy(a_num, str, len + 1);
-    *num = ft_atoi(a_num);
+    *num = atoi(a_num);
     free(a_num);
     return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:58:59 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 19:47:42 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/19 21:57:18 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 typedef struct  s_g
 {
     char        save;
-    char        *cub_path;
     int         ceiling;
     int         floor;
+    char        *cub_path;
     t_window    window;
     t_player    player;
     t_camera    camera;
