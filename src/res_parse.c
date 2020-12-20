@@ -6,11 +6,17 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 17:55:09 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/19 18:31:44 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/20 18:58:15 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
+
+void    res_error(char *error, t_g *g, char *line)
+{
+    free(line);
+    error_exit(error, g, 0);
+}
 
 int    store_num(char *str, int *num)
 {
@@ -32,15 +38,15 @@ void    set_res(t_g *g)
     line = anti_space(read_line(g), 0);
 
     if (*line != 'R' || !(ft_isspace(*(line + 1))))
-        line_error("Parametro resolución incorrecto", g, line);
+        res_error("Parametro resolución incorrecto", g, line);
     line = anti_space(line, 1);
     if (!ft_isdigit(*line))
-        line_error("Parametro resolución incorrecto", g, line);
+        res_error("Parametro resolución incorrecto", g, line);
     line = anti_space(line, store_num(line, &g->window.width));
     if (!ft_isdigit(*line))
-        line_error("Parametro resolución incorrecto", g, line);
+        res_error("Parametro resolución incorrecto", g, line);
     line = anti_space(line, store_num(line, &g->window.height));
     if (ft_strlen(line) != 0)
-        line_error("Parametro resolución incorrecto", g, line);
+        res_error("Parametro resolución incorrecto", g, line);
     free(line);
 }

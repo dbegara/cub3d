@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:25:07 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/19 18:49:36 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/20 18:55:51 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char    *parse_path(char **line, t_g *g)
     if (ft_memcmp(path + (len - 4), ".xpm", 4))
     {
         free(*line);
-        line_error("Extensión de textura incorrecto", g, path);
+        line_error("Extensión de textura incorrecta", g, path);
     }
     *line = anti_space(*line, i);
     if (ft_strlen(*line) != 0)

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 17:45:31 by dbegara-          #+#    #+#             */
-/*   Updated: 2019/11/19 18:37:00 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:27:34 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));

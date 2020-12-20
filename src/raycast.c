@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/12/19 22:02:30 by dbegara-         ###   ########.fr       */
+/*   Updated: 2020/12/20 19:12:37 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,19 @@ void    ray_dda(t_raycast *r, char worldMap[24][24], t_g *g)
         r->wall_dist = (r->map_y - g->player.pos_y + (1 - r->step_y) / 2) / r->ray_y;
 }
 
+int     tex_num(t_raycast r)
+{
+    if (r.step_x < 0 && r.side == 0)
+		return (0);
+	if (r.step_x > 0 && r.side == 0)
+		return (1);
+	if (r.step_y < 0 && r.side == 1)
+		return (2);
+	if (r.step_y > 0 && r.side == 1)
+		return (3);
+    return (0);
+}
+
 void    raycast(char worldMap[24][24], t_g *g)
 {
     t_raycast r;
@@ -104,7 +117,6 @@ void    raycast(char worldMap[24][24], t_g *g)
         if(drawEnd >= g->window.height)
             drawEnd = g->window.height - 1;
 
-        int text_num = worldMap[r.map_x][r.map_y] - 1;
         int tex_width = g->texture[0].width;
         int tex_heigh = g->texture[0].heigh;
 
@@ -133,7 +145,7 @@ void    raycast(char worldMap[24][24], t_g *g)
         {
             tex_y = (int)tex_pos & (tex_heigh - 1);
             tex_pos += step;
-            int color = g->texture[text_num].img.addr[tex_heigh * tex_y + tex_x];
+            int color = g->texture[tex_num(r)].img.addr[tex_heigh * tex_y + tex_x];
             img_pixel_put(&g->img, r.x, y, color);
             y++;
         }
