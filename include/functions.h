@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/19 21:59:57 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:54:27 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void        tex_parse(t_g *g);
 void        line_error(char *error, t_g *g, char *line);
 int         store_num(char *str, int *num);
 void        parse_color(t_g *g);
+void        map_parse(t_g *g);
+void        check_map(t_g *g);
+void        find_vecinos(t_map map, int x, int y);
 
 #endif

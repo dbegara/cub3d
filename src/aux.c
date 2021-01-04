@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 21:29:36 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 19:24:21 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:18:31 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,16 @@ char    *anti_space(char *str, int skip)
 
 char    *read_line(t_g *g)
 {
+    int ret;
     char *line;
 
-    if (get_next_line(g->file.fd, &line) < 0)
+    if ((ret = get_next_line(g->file.fd, &line)) <= 0)
     {
+        if (ret == 0)
+        {
+            free(line);
+            return (0);
+        }
         free(g);
         error_exit("Error\nNo se pudo leer el archivo", g, 0);
     }

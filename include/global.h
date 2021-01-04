@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:58:59 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/19 21:57:18 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:04:26 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 #ifndef GLOBAL_H
 # define GLOBAL_H
 
+typedef struct  s_map
+{
+    int         **w_map;
+    int         height;
+    int         width;
+}               t_map;
+
 typedef struct  s_g
 {
     char        save;
     int         ceiling;
     int         floor;
     char        *cub_path;
+    t_map       map;
     t_window    window;
     t_player    player;
     t_camera    camera;
@@ -30,6 +38,5 @@ typedef struct  s_g
     t_texture   texture[4];
     t_sprite    sprite;
 }               t_g;
-
 
 #endif
