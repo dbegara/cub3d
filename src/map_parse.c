@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:16:11 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/04 20:26:18 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:06:48 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void    map_parse(t_g *g)
     char    *line;
     int     l;
     t_list  *map;
-    t_list  *map_aux;
 
     g->map.height = 0;
     g->map.width = 0;
@@ -83,7 +82,6 @@ void    map_parse(t_g *g)
         g->map.height++;
     }
     g->map.w_map = malloc(g->map.height * sizeof(int *));
-    map_aux = map;
     fill_map(g, g->map.width, g->map.height, map);
-    ft_lstclear(&map_aux, free);
+    ft_lstclear(&map, free);
 }
