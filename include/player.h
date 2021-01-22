@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davidbegarabesco <davidbegarabesco@stud    +#+  +:+       +#+        */
+/*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 20:05:58 by davidbegara       #+#    #+#             */
-/*   Updated: 2020/11/18 20:08:00 by davidbegara      ###   ########.fr       */
+/*   Updated: 2021/01/22 16:02:36 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct  s_player 
 {
+    char        is_player;
     double      pos_x;
     double      pos_y;
     double      dir_x;

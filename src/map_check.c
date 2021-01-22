@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:27:33 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/07 16:59:47 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:55:54 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void    is_open(t_map map, t_g *g)
         if (map.w_map[i][0] == -1 || map.w_map[i][map.width - 1] == -1)
         {
             free_textures(g);
+            free_map(g->map);
             error_exit("El mapa está abierto", g, 1);
         }
         i++;

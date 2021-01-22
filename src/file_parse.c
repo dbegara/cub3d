@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 18:44:21 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/04 20:50:52 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/22 20:00:07 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    check_file_name(char *path, t_g *g)
 
     len = ft_strlen(path);
     if (ft_memcmp(path + (len - 4), ".cub", 4) || g->file.exist)
-        error_exit("Error\nArgumento incorrecto", g, 0);
+        error_exit("Argumento incorrecto", g, 0);
     g->file.exist = 1;
     g->file.path = path;
 }
@@ -40,4 +40,5 @@ void    parse_file(char *path, t_g *g)
     parse_color(g);
     map_parse(g);
     check_map(g);
+    get_objects(g);
 }

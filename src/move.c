@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 19:25:41 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/11/26 19:10:38 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:11:16 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,61 +16,33 @@ void     move(t_g *g)
 {
     double old_dir_x;
     double old_plane_x;
-    
-    char worldMap[24][24]=
-    {
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-    };
-    
+
     if (g->move.w)
     {
-        if(!(worldMap[(int)(g->player.pos_x + g->player.dir_x * 0.07)][(int)g->player.pos_y]))
+        if(!(g->map.w_map[(int)(g->player.pos_x + g->player.dir_x * 0.07)][(int)g->player.pos_y]))
             g->player.pos_x += g->player.dir_x * 0.05;
-        if(!(worldMap[(int)g->player.pos_x][(int)(g->player.pos_y + g->player.dir_y * 0.07)]))
+        if(!(g->map.w_map[(int)g->player.pos_x][(int)(g->player.pos_y + g->player.dir_y * 0.07)]))
             g->player.pos_y += g->player.dir_y * 0.05;
     }
     if (g->move.s)
     {
-        if(!(worldMap[(int)(g->player.pos_x - g->player.dir_x * 0.07)][(int)g->player.pos_y]))
+        if(!(g->map.w_map[(int)(g->player.pos_x - g->player.dir_x * 0.07)][(int)g->player.pos_y]))
             g->player.pos_x -= g->player.dir_x * 0.05;
-        if(!(worldMap[(int)g->player.pos_x][(int)(g->player.pos_y - g->player.dir_y * 0.07)]))
+        if(!(g->map.w_map[(int)g->player.pos_x][(int)(g->player.pos_y - g->player.dir_y * 0.07)]))
             g->player.pos_y -= g->player.dir_y * 0.05;
     }
     if (g->move.a)
     {
-        if(!(worldMap[(int)(g->player.pos_x - g->player.dir_y * 0.07)][(int)g->player.pos_y]))
+        if(!(g->map.w_map[(int)(g->player.pos_x - g->player.dir_y * 0.07)][(int)g->player.pos_y]))
             g->player.pos_x -= g->player.dir_y * 0.05;
-        if(!(worldMap[(int)g->player.pos_x][(int)(g->player.pos_y + g->player.dir_x * 0.07)]))
+        if(!(g->map.w_map[(int)g->player.pos_x][(int)(g->player.pos_y + g->player.dir_x * 0.07)]))
             g->player.pos_y += g->player.dir_x * 0.05;
     }
     if (g->move.d)
     {
-        if(!(worldMap[(int)(g->player.pos_x + g->player.dir_y * 0.07)][(int)g->player.pos_y]))
+        if(!(g->map.w_map[(int)(g->player.pos_x + g->player.dir_y * 0.07)][(int)g->player.pos_y]))
             g->player.pos_x += g->player.dir_y * 0.05;
-        if(!(worldMap[(int)g->player.pos_x][(int)(g->player.pos_y - g->player.dir_x * 0.07)]))
+        if(!(g->map.w_map[(int)g->player.pos_x][(int)(g->player.pos_y - g->player.dir_x * 0.07)]))
             g->player.pos_y -= g->player.dir_x * 0.05;
     }
     

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:32:06 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/26 17:43:16 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/22 17:37:15 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int argc, char **argv)
 {
 	t_g *g;
-
+  
   g = check_args(argc, argv);
   init_game(g);
 

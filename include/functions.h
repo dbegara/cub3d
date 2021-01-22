@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/04 20:54:27 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:01:49 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # define FUNCTIONS_H
 
 void        window_init(t_g *g);
-void        raycast(char worldMap[24][24], t_g *g);
+void        raycast(int **worldMap, t_g *g);
 void		img_pixel_put(t_image *img, int x, int y, int color);
 int         pressed(int keycode, t_g *g);
 int         depressed(int asi, t_g *me_siento);
 void        init_game(t_g *g);
-t_player    init_player(void);
+t_player    init_player(int x, int y, int dx, int dy);
 int         cub_exit(t_g *g);
 int         create_trgb(int r, int g, int b);
 int         game_loop(t_g *g);
@@ -45,5 +45,8 @@ void        parse_color(t_g *g);
 void        map_parse(t_g *g);
 void        check_map(t_g *g);
 void        find_vecinos(t_map map, int x, int y);
+void        free_textures(t_g *g);
+void        free_map(t_map map);
+void        get_objects(t_g *g);
 
 #endif
