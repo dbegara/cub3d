@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:39:15 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/16 19:03:41 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:22:42 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct  s_raycast
 {
+	int			counter;
     double      *z_buffer;
     int         x;
     int         y;

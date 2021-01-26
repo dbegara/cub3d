@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:59:35 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/22 19:49:49 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/26 18:37:50 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void    set_player_pos(int i, int j, t_g *g)
     if (g->player.is_player == 1)
     {
         free_textures(g);
+		free_sprites(g);
         free_map(g->map);
         error_exit("Solo puede haber un jugador", g, 1);
     }
@@ -66,27 +67,14 @@ void    set_player_pos(int i, int j, t_g *g)
     g->player.is_player = 1;
 }
 
-void    set_sprite_pos(int i, int j, t_g *g)
-{
-    if (g->sprite.is_sprite == 1)
-    {
-        free_textures(g);
-        free_map(g->map);
-        error_exit("Solo puede haber un sprite", g, 1);
-    }
-    g->sprite.x = i;
-    g->sprite.y = j;
-    g->map.w_map[i][j] = 0;
-    g->sprite.is_sprite = 1;
-}
-
 void    get_objects(t_g *g)
 {
     int i;
     int j;
+    int num_s;
 
     g->player.is_player = 0;
-    g->sprite.is_sprite = 0;
+    num_s = -1;
     i = 0;
     while (i < g->map.height)
     {
@@ -98,7 +86,7 @@ void    get_objects(t_g *g)
             if (g->map.w_map[i][j] > 2)
                 set_player_pos(i, j, g);
             if (g->map.w_map[i][j] == 2)
-                set_sprite_pos(i, j, g);
+                set_sprite_pos(++num_s, i, j, g);
             j++;
         }
         i++;

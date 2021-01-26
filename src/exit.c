@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:43:53 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/22 15:54:47 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/26 18:13:14 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void    error_exit(char *error, t_g *g, char close)
 int     cub_exit(t_g *g)
 {
     mlx_destroy_window(g->window.mlx, g->window.mlx_win);
+	free_sprites(g);
+	free_textures(g);
     free_map(g->map);
     free(g);
     system("leaks cub3d");

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:27:33 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/22 15:55:54 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/01/26 19:08:34 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    free_textures(t_g *g)
         mlx_destroy_image(g->window.mlx, g->texture[i].img.img);
         i++;
     }
-    mlx_destroy_image(g->window.mlx, g->sprite.texture.img.img);
+    mlx_destroy_image(g->window.mlx, g->sprite_texture.img.img);
 }
 
 void    is_open(t_map map, t_g *g)
@@ -78,21 +78,27 @@ void    check_map(t_g *g)
 {
     int i;
     int j;
+	int player;
 
     i = 0;
+	player = 0;
+	g->num_sprites = 0;
     while (i < g->map.height)
     {
         j = 0;
         while (j < g->map.width)
         {
-            if (g->map.w_map[i][j] > 2)
-            {
-                find_vecinos(g->map, j, i);
-                break;
-            }
+            if (g->map.w_map[i][j] > 2 && !player)
+			{
+				find_vecinos(g->map, j, i);
+				player = 1;
+			}
+            if (g->map.w_map[i][j] == 2)
+				g->num_sprites++;
             j++;
         }
         i++;
     }
     is_open(g->map, g);
+    sprite_malloc(g);
 }
