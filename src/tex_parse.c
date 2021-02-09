@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:25:07 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 16:25:34 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:39:36 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    line_error(char *error, t_g *g, char *line)
 {
     free(line);
-    error_exit(error, g, 1);
+    error_exit(error, g);
 }
 
 char    *parse_path(char **line, t_g *g)
@@ -67,9 +67,9 @@ void    tex_parse(t_g *g)
         free(line);
         i++;
     }
-    line = anti_space(read_line(g), 0);
+	line = read_line(g);
     if (*line != 'S' || !(ft_isspace(*(line + 1))))
-            line_error("Argumento de sprite incorrecto", g, line);
+           line_error("Argumento de sprite incorrecto", g, line);
     line = parse_path(&line, g);
     g->sprite_texture = xpm_to_img(line, g);
     free(line);

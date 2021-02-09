@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 21:29:36 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/04 20:18:31 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:01:59 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char    *read_line(t_g *g)
             return (0);
         }
         free(g);
-        error_exit("Error\nNo se pudo leer el archivo", g, 0);
+        error_exit("Error\nNo se pudo leer el archivo", g);
     }
     if (len_sp(line) == 0)
     {

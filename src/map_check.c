@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:27:33 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 19:08:34 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:39:42 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    is_open(t_map map, t_g *g)
         {
             free_textures(g);
             free_map(g->map);
-            error_exit("El mapa está abierto", g, 1);
+            error_exit("El mapa está abierto", g);
         }
         i++;
     }
@@ -68,7 +68,7 @@ void    is_open(t_map map, t_g *g)
         if (map.w_map[0][i] == -1 || map.w_map[map.height - 1][i] == -1)
         {
             free_textures(g);
-            error_exit("El mapa está abierto", g, 1);
+            error_exit("El mapa está abierto", g);
         }
         i++;
     }

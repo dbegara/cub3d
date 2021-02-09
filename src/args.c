@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 18:07:22 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 19:26:04 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:00:09 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ t_g    *check_args(int argc, char **argv)
     t_g *g;
 
     if (!(g = malloc(sizeof(t_g))))
-        error_exit("Fallo al alocar memoria", g, 0);
+	{
+        ft_putstr_fd("Error:\nFallo al alocar memoria", 1);
+		exit(0);
+	}
+	g->exit_status = 0;
     g->file.exist = 0;
     if (argc < 2 || argc > 3)
-       error_exit("Número de argumentos incorrecto", g, 0);
+       error_exit("Número de argumentos incorrecto", g);
     while (argc > 1)
     {
         if(!(ft_memcmp(argv[argc - 1], "--save", 7)))
@@ -30,6 +34,6 @@ t_g    *check_args(int argc, char **argv)
         argc--;
     }
     if (!(g->file.exist))
-       error_exit("No se ha especificado el .cub", g, 0);
+       error_exit("No se ha especificado el .cub", g);
     return (g);
 }

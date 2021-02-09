@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 18:12:39 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:44:43 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		paint_sky(t_g *g, int x, int length);
 void		paint_floor(t_g *g, int x, int start);
 t_g			*check_args(int argc, char **argv);
 void		parse_file(char *path, t_g *g);
-void		error_exit(char *error, t_g *g, char close);
+void		error_exit(char *error, t_g *g);
 char		*anti_space(char *str, int skip);
 char		*read_line(t_g *g);
 int			num_len(char *str);
@@ -52,5 +52,6 @@ void		set_sprite_pos(int num, int i, int j, t_g *g);
 void		sprite_malloc(t_g *g);
 void		sort_sprites(t_g *g);
 void		free_sprites(t_g *g);
+void		img_to_bmp(t_g *g);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:58:59 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 18:08:27 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:18:00 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ typedef struct  s_map
 typedef struct  s_g
 {
     char        save;
-    int         ceiling;
-    int         floor;
+	char		exit_status;
     t_map       map;
     t_window    window;
     t_player    player;
@@ -36,6 +35,8 @@ typedef struct  s_g
     t_file      file;
     t_texture   texture[4];
 	t_texture	sprite_texture;
+	int         ceiling;
+    int         floor;
     int         num_sprites;
 	int			*sprite_order;
 	double		*sprite_distance;

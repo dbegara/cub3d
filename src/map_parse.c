@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:16:11 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/22 15:54:15 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 20:03:01 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int     get_int(char c, t_g *g)
         else
         {
             free_textures(g);
-            error_exit("Carácter no válido en el mapa", g, 1);
+            error_exit("Carácter no válido en el mapa", g);
             return (1);
         }
     }

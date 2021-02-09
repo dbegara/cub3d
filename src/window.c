@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:55:44 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 19:06:50 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:50:10 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void window_init(t_g *g)
 		g->window.height = MIN_WIN_HEIGHT;
 	g->window.mlx = mlx_init();
 	g->window.mlx_win = mlx_new_window(g->window.mlx, g->window.width, g->window.height, "Cub3D");
+	g->exit_status = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 17:55:09 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 19:05:11 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:49:46 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    res_error(char *error, t_g *g, char *line)
 {
     free(line);
-    error_exit(error, g, 0);
+    error_exit(error, g);
 }
 
 int    store_num(char *str, int *num)
