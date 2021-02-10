@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/09 19:44:43 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/10 19:44:14 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,14 @@ void		sprite_malloc(t_g *g);
 void		sort_sprites(t_g *g);
 void		free_sprites(t_g *g);
 void		img_to_bmp(t_g *g);
+void		set_sprite_vars(t_raycast *r, t_g *g);
+void		calc_sprite_size(t_raycast *r, t_g *g);
+void		draw_sprite(t_raycast *r, t_g *g);
+void		order_sprites(t_raycast *r, t_g *g);
+int			tex_num(t_raycast r);
+void		ray_dda(t_raycast *r, int **world_map, t_g *g);
+void		ray_calc(t_raycast *r, t_g *g);
+void		set_vars(t_raycast *r, t_g *g);
+void		set_vars2(t_raycast *r, t_g *g);
 
 #endif
