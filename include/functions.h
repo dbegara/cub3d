@@ -6,14 +6,14 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:47:43 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/10 19:44:14 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:33:32 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
-
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
+
+# include "includes.h"
 
 void		window_init(t_g *g);
 void		raycast(int **world_map, t_g *g);

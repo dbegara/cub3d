@@ -6,19 +6,17 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 19:35:21 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/17 19:23:33 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:26:51 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef FILE_H
+# define FILE_H
 
-typedef struct  s_file {
-
-int             exist;
-char            *path;
-int             fd;
-
-}               t_file;
-
+typedef	struct	s_file
+{
+	int			exist;
+	char		*path;
+	int			fd;
+}				t_file;
 #endif

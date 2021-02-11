@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 19:25:41 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:13:51 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:20:02 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void		x_mov(t_g *g)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-
 	if (g->move.w)
 	{
 		if (!(g->map.w_map[(int)(g->player.pos_x +
@@ -39,9 +36,6 @@ void		x_mov(t_g *g)
 
 void		y_mov(t_g *g)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-
 	if (g->move.a)
 	{
 		if (!(g->map.w_map[(int)(g->player.pos_x -

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:25:07 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:18:15 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:21:50 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	tex_parse(t_g *g)
 	texts[1] = "SO";
 	texts[2] = "WE";
 	texts[3] = "EA";
-	i = 0;
-	while (i++ < 4)
+	i = -1;
+	while (++i < 4)
 	{
 		line = anti_space(read_line(g), 0);
 		if (*line != texts[i][0] || *(line + 1) !=
