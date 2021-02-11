@@ -6,21 +6,19 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:24:24 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/01/26 18:07:27 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:01:08 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-void    init_game(t_g *g)
+void	init_game(t_g *g)
 {
-    init_image(g);
-
-    g->move.a = 0;
-    g->move.w = 0;
-    g->move.d = 0;
-    g->move.s = 0;
-
-    g->move.rot_l = 0;
-    g->move.rot_r = 0;
+	init_image(g);
+	g->move.a = 0;
+	g->move.w = 0;
+	g->move.d = 0;
+	g->move.s = 0;
+	g->move.rot_l = 0;
+	g->move.rot_r = 0;
 }

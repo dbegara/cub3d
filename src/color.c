@@ -6,11 +6,11 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 18:39:23 by dbegara-          #+#    #+#             */
-/*   Updated: 2020/12/19 21:32:49 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:59:08 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		create_trgb(int r, int g, int b)
+int	create_trgb(int r, int g, int b)
 {
-	return(r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
