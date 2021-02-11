@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:42:40 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:30:34 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/11 18:06:14 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
-# include "../lib/ftprintf/ftprintf.h"
 # include "../lib/gnl/gnl.h"
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft/libft.h"
