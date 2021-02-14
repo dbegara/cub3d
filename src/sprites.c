@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:13:04 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:16:20 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:13:41 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		set_sprite_pos(int num, int i, int j, t_g *g)
 {
-	g->sprite[num].x = i;
-	g->sprite[num].y = j;
+	g->sprite[num].x = i + 0.5;
+	g->sprite[num].y = j + 0.5;
 	g->map.w_map[i][j] = 0;
 }
 

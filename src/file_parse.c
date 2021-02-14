@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 18:44:21 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:00:40 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:30:30 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	parse_file(char *path, t_g *g)
 	tex_parse(g);
 	g->exit_status = 2;
 	parse_color(g);
+	g->map.height = 0;
+	g->map.width = 0;
 	map_parse(g);
 	g->exit_status = 3;
 	check_map(g);

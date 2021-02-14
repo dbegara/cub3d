@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:59:35 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:06:04 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:19:16 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ void	get_objects(t_g *g)
 		}
 		i++;
 	}
+	if (!(g->player.is_player))
+		error_exit("No hay jugador", g);
 }

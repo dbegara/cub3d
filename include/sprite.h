@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:00:13 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:33:22 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:13:35 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct	s_sprite
 {
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 }				t_sprite;
 
 #endif

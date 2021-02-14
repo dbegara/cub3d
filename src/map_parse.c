@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:16:11 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:07:21 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:30:20 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	map_parse(t_g *g)
 	int		l;
 	t_list	*map;
 
-	g->map.height = 0;
-	g->map.width = 0;
 	while ((line = read_line(g)) != 0)
 	{
 		l = ft_strlen(line);
@@ -86,6 +84,12 @@ void	map_parse(t_g *g)
 		else
 			ft_lstadd_back(&map, ft_lstnew(line));
 		g->map.height++;
+	}
+	if (g->map.height < 3 || g->map.width < 3)
+	{
+		if (g->map.height != 0)
+			ft_lstclear(&map, free);
+		error_exit("Mapa incorrecto", g);
 	}
 	g->map.w_map = malloc(g->map.height * sizeof(int *));
 	fill_map(g, g->map.width, g->map.height, map);
