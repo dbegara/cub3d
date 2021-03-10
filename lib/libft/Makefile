@@ -18,17 +18,14 @@ NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(objects)
-	ar rcs $(NAME) $(objects)
+$(NAME): $(objects) $(extra)
+	ar rcs $(NAME) $(objects) $(extra)
 
-$(objects): $(objects:.o=.c)
+$(objects): $(objects:.o=.c) $(extra:.o=.c)
 	$(CC) $(CFLAGS) $(objects:.o=.c)
 
-$(extra): $(extra:.o=.c)
+$(extra): 
 	$(CC) $(CFLAGS) $(extra:.o=.c)
-
-bonus: $(objects) $(extra)
-	ar rcs $(NAME) $(objects) $(extra)
 clean:
 	rm -f $(objects) $(extra)
 fclean: clean

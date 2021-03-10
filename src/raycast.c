@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:35:53 by davidbegara       #+#    #+#             */
-/*   Updated: 2021/02/10 19:48:06 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/22 17:31:37 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	raycast_loop(t_raycast *r, t_g *g, int **world_map)
 	r->tex_pos = (r->draw_start - g->window.height /
 	2 + r->line_height / 2) * r->step;
 	r->y = r->draw_start;
-	while (r->y < r->draw_end)
+	paint_sky(g, r->x, r->draw_start);
+	paint_floor(g, r->x, r->draw_end - 1);
+	while (r->y <= r->draw_end)
 	{
 		r->tex_y = (int)r->tex_pos & (r->tex_height - 1);
 		r->tex_pos += r->step;
@@ -33,8 +35,6 @@ void	raycast_loop(t_raycast *r, t_g *g, int **world_map)
 		img_pixel_put(&g->img, r->x, r->y, color);
 		r->y++;
 	}
-	paint_sky(g, r->x, r->draw_start);
-	paint_floor(g, r->x, r->draw_end - 1);
 	r->z_buffer[r->x] = r->wall_dist;
 	r->x++;
 }

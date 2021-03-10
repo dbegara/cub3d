@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:09:26 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:01:59 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/22 17:30:00 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	paint_sky(t_g *g, int x, int length)
 
 void	paint_floor(t_g *g, int x, int start)
 {
-	while (start < g->img.height)
+	while (start < g->img.height - 1)
 	{
-		img_pixel_put(&g->img, x, start, g->floor);
 		start++;
+		img_pixel_put(&g->img, x, start, g->floor);
 	}
 }

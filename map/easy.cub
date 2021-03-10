@@ -1,4 +1,4 @@
-R 1080    720
+R 1080 720
    
 NO textures/wall1.xpm
 SO textures/wall2.xpm
@@ -7,12 +7,12 @@ EA textures/wall4.xpm
 
 S textures/sprite.xpm
 
-C 150 ,80,80
-
-F 10 , 10 , 100
+F 50, 10, 100
+C 150 ,10,80
 
 1111111111
-111111N001
+1111100201
 1002000001
-1001000001
+1001000N01
 1111111111
+0000000000

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:16:11 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/14 18:30:20 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:51:32 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		get_int(char c, t_g *g)
 			return (c - 48);
 		else
 		{
-			free_textures(g);
 			error_exit("Carácter no válido en el mapa", g);
 			return (1);
 		}
@@ -68,23 +67,38 @@ void	fill_map(t_g *g, int biggest, int size, t_list *map)
 	}
 }
 
+void	map_parse_aux(char *line, t_list **map, t_g *g, char lst_started)
+{
+	int l;
+
+	if (*line != '1' && *line != '0' && *line != '2')
+	{
+		if (lst_started)
+			ft_lstclear(map, free);
+		error_exit("Mapa incorrecto", g);
+	}
+	l = ft_strlen(line);
+	if (l > g->map.width)
+		g->map.width = l;
+	if (g->map.height == 0)
+	{
+		*map = ft_lstnew(line);
+		lst_started = 1;
+	}
+	else
+		ft_lstadd_back(map, ft_lstnew(line));
+	g->map.height++;
+}
+
 void	map_parse(t_g *g)
 {
 	char	*line;
-	int		l;
 	t_list	*map;
+	char	lst_started;
 
+	lst_started = 0;
 	while ((line = read_line(g)) != 0)
-	{
-		l = ft_strlen(line);
-		if (l > g->map.width)
-			g->map.width = l;
-		if (g->map.height == 0)
-			map = ft_lstnew(line);
-		else
-			ft_lstadd_back(&map, ft_lstnew(line));
-		g->map.height++;
-	}
+		map_parse_aux(line, &map, g, lst_started);
 	if (g->map.height < 3 || g->map.width < 3)
 	{
 		if (g->map.height != 0)

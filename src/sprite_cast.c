@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:34:18 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/11 17:15:39 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/22 17:33:56 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_sprite(t_raycast *r, t_g *g)
 	int	color;
 
 	r->stripe = r->draw_start_x - 1;
-	while (++r->stripe < r->draw_end_x)
+	while (++r->stripe <= r->draw_end_x)
 	{
 		r->tex_x = (int)(256 * (r->stripe - (-r->sprite_width / 2 +
 		r->s_screen_x)) * g->sprite_texture.width / r->sprite_width) / 256;

@@ -6,7 +6,7 @@
 /*   By: dbegara- <dbegara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:59:35 by dbegara-          #+#    #+#             */
-/*   Updated: 2021/02/14 18:19:16 by dbegara-         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:23:33 by dbegara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,7 @@ void	set_player_pos(int i, int j, t_g *g)
 	int dir_y;
 
 	if (g->player.is_player == 1)
-	{
-		free_textures(g);
-		free_sprites(g);
-		free_map(g->map);
 		error_exit("Solo puede haber un jugador", g);
-	}
 	get_player_dir(&dir_x, &dir_y, g->map.w_map[i][j]);
 	g->player = init_player(i, j, dir_x, dir_y);
 	set_camera_dir(g);
